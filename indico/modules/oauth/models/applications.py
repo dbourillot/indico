@@ -103,3 +103,6 @@ class OAuthApplication(db.Model):
         client_secret = str(uuid4())
         return OAuthApplication(name=name, description=description, client_id=client_id, client_secret=client_secret,
                                 redirect_uris=redirect_uris)
+
+    def reset_client_secret(self):
+        self.client_secret = str(uuid4())
