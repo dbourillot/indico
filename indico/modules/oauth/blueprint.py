@@ -20,7 +20,8 @@ from flask import request
 
 from indico.modules.oauth.controllers import (RHOAuthUserProfile, RHOAuthAdmin, RHOAuthAdminApplication,
                                               RHOAuthAdminApplicationNew, RHOAuthAdminApplicationDelete,
-                                              RHOAuthAdminApplicationReset, RHOAuthAdminApplicationRevoke)
+                                              RHOAuthAdminApplicationReset, RHOAuthAdminApplicationRevoke,
+                                              RHOAuthUserTokenRevoke)
 from indico.web.flask.wrappers import IndicoBlueprint
 
 oauth_blueprint = _bp = IndicoBlueprint('oauth', __name__, template_folder='templates')
@@ -36,6 +37,7 @@ _bp.add_url_rule('/admin/apps/<int:id>/revoke', 'app_revoke', RHOAuthAdminApplic
 # User profile
 with _bp.add_prefixed_rules('/user/<int:user_id>', '/user'):
     _bp.add_url_rule('/applications/', 'user_profile', RHOAuthUserProfile)
+    _bp.add_url_rule('/applications/<int:id>/revoke/', 'user_token_revoke', RHOAuthUserTokenRevoke, methods=('POST',))
 
 
 @_bp.url_defaults
