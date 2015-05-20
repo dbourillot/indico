@@ -508,6 +508,7 @@ class Config:
         'EmbeddedWebserver'         : False,
         'EmbeddedWebserverBaseURL'  : None,
         'OAuthAccessTokenTTL'       : 10000,
+        'OAuthGrantTokenTTL'        : 100,
         'MobileURL'                 : '',
         'CheckinURL'                : 'http://old.indico-software.org/wiki/apps/check-in',
         'SCSSDebugInfo'             : True,
