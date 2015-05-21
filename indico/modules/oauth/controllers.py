@@ -71,6 +71,7 @@ class RHOAuthAdminApplication(RHOAuthAdminApplicationBase):
             self.application.name = form.name.data
             self.application.description = form.description.data
             self.application.redirect_uris = form.redirect_uris.data
+            self.application.is_trusted = form.is_trusted.data
             flash(_("Application {} was modified").format(self.application.name), 'success')
             return redirect(url_for('.apps'))
         return WPOAuthAdmin.render_template('app_details.html', application=self.application, form=form,
