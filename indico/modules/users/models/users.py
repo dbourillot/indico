@@ -248,6 +248,7 @@ class User(db.Model):
     # - agreements (Agreement.user)
     # - requests_created (Request.created_by_user)
     # - requests_processed (Request.processed_by_user)
+    # - oauth_tokens (OAuthToken.user)
 
     @property
     def as_principal(self):
