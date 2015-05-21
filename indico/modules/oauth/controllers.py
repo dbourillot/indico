@@ -27,9 +27,8 @@ from indico.modules.oauth.models.tokens import OAuthToken
 from indico.modules.oauth.views import WPOAuthUserProfile, WPOAuthAdmin
 from indico.util.i18n import _
 from indico.web.flask.util import url_for
-from indico.web.forms.base import FormDefaults
 from MaKaC.webinterface.rh.admins import RHAdminBase
-from MaKaC.webinterface.rh.base import RHProtected
+from MaKaC.webinterface.rh.base import RH, RHProtected
 
 
 class RHOAuthAuthorize(RHProtected):
@@ -41,9 +40,15 @@ class RHOAuthAuthorize(RHProtected):
         if request.method == 'GET':
             if self.application.is_trusted:
                 return True
-            return render_template('authorize.html', application=self.application)
+            return render_template('oauth/authorize.html', application=self.application)
         confirm = request.form.get('confirm', 'no')
         return confirm == 'yes'
+
+
+class RHOAuthToken(RH):
+    @oauth.token_handler
+    def _process(self, **kwargs):
+        return None
 
 
 class RHOAuthAdmin(RHAdminBase):
@@ -64,9 +69,7 @@ class RHOAuthAdminApplication(RHOAuthAdminApplicationBase):
     """Handles application details page"""
 
     def _process(self):
-        defaults = FormDefaults(name=self.application.name, description=self.application.description,
-                                redirect_uris=self.application.redirect_uris)
-        form = ApplicationForm(obj=defaults, application=self.application)
+        form = ApplicationForm(obj=self.application, application=self.application)
         if form.validate_on_submit():
             self.application.name = form.name.data
             self.application.description = form.description.data
