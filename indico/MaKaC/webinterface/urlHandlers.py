@@ -189,26 +189,6 @@ class UHWelcome(URLHandler):
     _endpoint = 'misc.index'
 
 
-class UHOAuthRequestToken(URLHandler):
-    _endpoint = 'oauth_old.oauth-request_token'
-
-
-class UHOAuthAuthorization(URLHandler):
-    _endpoint = 'oauth_old.oauth-authorize'
-
-
-class UHOAuthAccessTokenURL(URLHandler):
-    _endpoint = 'oauth_old.oauth-access_token'
-
-
-class UHOAuthAuthorizeConsumer(UserURLHandler):
-    _endpoint = 'oauth_old.oauth-authorize_consumer'
-
-
-class UHOAuthThirdPartyAuth(UserURLHandler):
-    _endpoint = 'oauth_old.oauth-thirdPartyAuth'
-
-
 class UHIndicoNews(URLHandler):
     _endpoint = 'misc.news'
 
@@ -1971,14 +1951,6 @@ class UHIPBasedACLFullAccessGrant(URLHandler):
 
 class UHIPBasedACLFullAccessRevoke(URLHandler):
     _endpoint = 'admin.adminServices-ipbasedacl_farevoke'
-
-
-class UHAdminOAuthConsumers(URLHandler):
-    _endpoint = 'admin.adminServices-oauthConsumers'
-
-
-class UHAdminOAuthAuthorized(URLHandler):
-    _endpoint = 'admin.adminServices-oauthAuthorized'
 
 
 class UHBadgeTemplates(URLHandler):
