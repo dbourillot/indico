@@ -300,8 +300,8 @@ MaxUploadFileSize = 0
 # OAUTH PARAMETERS
 #------------------------------------------------------------------------------
 
-# Time to live of the OAuth Tokens
-OAuthAccessTokenTTL = 10000
+# Time to live of OAuth grant tokens (in seconds)
+OAuthGrantTokenTTL = 100
 
 
 #------------------------------------------------------------------------------
